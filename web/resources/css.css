@@ -1,0 +1,473 @@
+body {
+  position: relative;
+  font-family: 'Lucida Grande';
+  background-color:#F1F1F1;
+  font-size: 11pt;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+header {
+  background: #DF723C;
+  height: 40px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3); 
+}
+header .title {
+  float: left;
+  line-height: 40px;
+  color: #fff;
+  padding: 0 15px;
+  font-size: 20px;
+}
+header nav {
+  float: right;
+}
+header nav ul {
+  margin: 0;
+}
+header nav li {
+  float: left;
+  list-style: none;
+}
+header nav li a {
+  display: block;
+  color: #fff;
+  padding: 0 10px;
+  line-height: 40px;
+  border-left: 1px solid #AFAFAF;
+  text-decoration: none;
+}
+.books {
+  position: relative;
+
+}
+.books li{
+  position: relative;
+  width: 200px;
+  float: left;
+  z-index: 1;
+  margin: 0px 50px 40px 0;
+  -webkit-perspective: 1800px;
+  -moz-perspective: 1800px;
+  perspective: 1800px;
+  list-style: none;
+}
+.books:last-child {
+  margin-right: 0;
+}
+
+.books .bk-book {
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform .5s;
+  -moz-transition: -moz-transform .5s;
+  transition: transform .5s;
+}
+
+.books .bk-book.bk-bookdefault:hover {
+  -webkit-transform: rotate3d(0,1,0,35deg);
+  -moz-transform: rotate3d(0,1,0,35deg);
+  transform: rotate3d(0,1,0,35deg);
+}
+
+.books .bk-book > div,
+.books .bk-front > div {
+  display: block;
+  position: absolute;
+}
+
+.books .bk-front {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 0% 50%;
+  -moz-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  -webkit-transition: -webkit-transform .5s;
+  -moz-transition: -moz-transform .5s;
+  transition: transform .5s;
+  -webkit-transform: translate3d(0,0,20px);
+  -moz-transform: translate3d(0,0,20px);
+  transform: translate3d(0,0,20px);
+  z-index: 10;
+}
+
+.books .bk-front > div {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.books .bk-page {
+  -webkit-transform: translate3d(0,0,19px);
+  -moz-transform: translate3d(0,0,19px);
+  transform: translate3d(0,0,19px);
+  display: none;
+  width: 195px;
+  height: 290px;
+  top: 5px;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  z-index: 9;
+}
+
+.books .bk-front,
+.books .bk-back,
+.books .bk-front > div {
+  width: 200px;
+  height: 300px;
+}
+
+.books .bk-left,
+.books .bk-right {
+  width: 40px;
+  left: -20px;
+}
+
+.books .bk-top,
+.books .bk-bottom {
+  width: 195px;
+  height: 40px;
+  top: -15px;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.books .bk-back {
+  -webkit-transform: rotate3d(0,1,0,-180deg) translate3d(0,0,20px);
+  -moz-transform: rotate3d(0,1,0,-180deg) translate3d(0,0,20px);
+  transform: rotate3d(0,1,0,-180deg) translate3d(0,0,20px);
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
+  border-radius: 3px 0 0 3px;
+}
+
+.books .bk-cover-back {
+  background-color: #000;
+  -webkit-transform: rotate3d(0,1,0,-180deg);
+  -moz-transform: rotate3d(0,1,0,-180deg);
+  transform: rotate3d(0,1,0,-180deg);
+}
+
+.books .bk-right {
+  height: 290px;
+  top: 5px;
+  -webkit-transform: rotate3d(0,1,0,90deg) translate3d(0,0,295px);
+  -moz-transform: rotate3d(0,1,0,90deg) translate3d(0,0,295px);
+  transform: rotate3d(0,1,0,90deg) translate3d(0,0,295px);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.books .bk-left {
+  height: 300px;
+  -webkit-transform: rotate3d(0,1,0,-90deg);
+  -moz-transform: rotate3d(0,1,0,-90deg);
+  transform: rotate3d(0,1,0,-90deg);
+}
+
+.books .bk-top {
+  -webkit-transform: rotate3d(1,0,0,90deg);
+  -moz-transform: rotate3d(1,0,0,90deg);
+  transform: rotate3d(1,0,0,90deg);
+}
+
+.books .bk-bottom {
+  -webkit-transform: rotate3d(1,0,0,-90deg) translate3d(0,0,390px);
+  -moz-transform: rotate3d(1,0,0,-90deg) translate3d(0,0,390px);
+  transform: rotate3d(1,0,0,-90deg) translate3d(0,0,390px);
+}
+
+/* Transform classes */
+
+.books .bk-viewinside .bk-front {
+  -webkit-transform: translate3d(0,0,20px) rotate3d(0,1,0,-160deg);
+  -moz-transform: translate3d(0,0,20px) rotate3d(0,1,0,-160deg);
+  transform: translate3d(0,0,20px) rotate3d(0,1,0,-160deg);
+}
+
+.books .bk-book.bk-viewinside {
+  -webkit-transform: translate3d(0,0,150px) rotate3d(0,1,0,0deg);
+  -moz-transform: translate3d(0,0,150px) rotate3d(0,1,0,0deg);
+  transform: translate3d(0,0,150px) rotate3d(0,1,0,0deg);
+}
+
+.books .bk-book.bk-viewback {
+  -webkit-transform: translate3d(0,0,0px) rotate3d(0,1,0,180deg);
+  -moz-transform: translate3d(0,0,0px) rotate3d(0,1,0,180deg);
+  transform: translate3d(0,0,0px) rotate3d(0,1,0,180deg);
+}
+
+.books .bk-viewback .bk-back {
+  z-index: 10;
+}
+
+/* Main colors and content */
+
+.books .bk-page,
+.books .bk-right,
+.books .bk-top,
+.books .bk-bottom {
+  background-color: #fff;
+}
+
+.books .bk-front > div {
+  border-radius: 0 3px 3px 0;
+  box-shadow:
+    inset 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.books .bk-front:after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: -1px;
+  width: 1px;
+}
+
+.books .bk-cover:after,
+.books .bk-back:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  width: 3px;
+  background: rgba(0,0,0,0.06);
+  box-shadow: 1px 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.books .bk-back:after {
+  left: auto;
+  right: 10px;
+}
+
+.bk-left h2 {
+  width: 200px;
+  height: 40px;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: rotate(90deg) translateY(-40px);
+  -moz-transform: rotate(90deg) translateY(-40px);
+  transform: rotate(90deg) translateY(-40px);
+}
+
+.bk-content {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  padding: 30px;
+  overflow: hidden;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  cursor: default;
+}
+
+.bk-content-current {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bk-content p {
+  padding: 0 0 10px;
+  -webkit-font-smoothing: antialiased;
+  color: #000;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: justify;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.bk-page nav {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.bk-page nav span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  color: #aaa;
+  background: #f0f0f0;
+  border-radius: 50%;
+}
+
+/* Individual style & artwork */
+
+/* Book 1 */
+.book-1 .bk-front > div,
+.book-1 .bk-back,
+.book-1 .bk-left,
+.book-1 .bk-front:after {
+  background-color: #ff924a;
+}
+
+.book-1 .bk-cover {
+  background-image: url(1.png);
+  background-repeat: no-repeat;
+  background-position: 100% 95%;
+}
+
+.book-1 .bk-cover h2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 20px;
+  padding-bottom: 10px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+}
+
+.book-1 .bk-cover h2 span.author,
+.book-1 .bk-left h2 span.author {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 13px;
+  padding-right: 20px;
+}
+
+.book-1 .bk-cover h2 span.author,.book-1 .bk-cover h2 span.title {
+  display: block;
+}
+.book-1 .bk-cover h2 span.year {
+  font-size: 12px;
+  color: #F8F8F8;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+}
+
+.book-1 .bk-cover h2 span.title,
+.book-1 .bk-left h2 span.title {
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+}
+
+.book-1 .bk-content p {
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+.book-1 .bk-left h2 {
+  color: #fff;
+  font-size: 15px;
+  line-height: 40px;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.book-1 .bk-back p {
+  color: #fff;
+  font-size: 13px;
+  padding: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Book 3 */
+
+.book-3 .bk-front > div,
+.book-3 .bk-back,
+.book-3 .bk-left,
+.book-3 .bk-front:after {
+  background-color: #a4c19e;
+}
+
+.book-3 .bk-cover {
+  background-image: url(3.png);
+  background-repeat: no-repeat;
+  background-position: 100% 95%;
+}
+
+.book-3 .bk-cover h2 {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  left: 40px;
+  padding-top: 15px;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+  height: 210px;
+}
+
+.book-3 .bk-cover h2 span:first-child,
+.book-3 .bk-left h2 span:first-child {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 13px;
+  padding-right: 20px;
+}
+
+.book-3 .bk-cover h2 span {
+  display: block;
+}
+.book-3 .bk-cover h2 span.year {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  text-align:center;
+  width: 100%
+}
+
+.book-3 .bk-cover h2 span.title,
+.book-3 .bk-left h2 span.title,
+.book-3 .bk-content p  {
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+.book-3 .bk-left h2 {
+  color: #fff;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.book-3 .bk-back img {
+  width: 200px;
+  display: block;
+  margin: 30px auto 0;
+}
+
+.book-3 .bk-back p {
+  color: #fff;
+  font-size: 13px;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  padding: 40px;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+}
+.bk-info {
+  position: relative;
+  margin-top: 340px;
+}
