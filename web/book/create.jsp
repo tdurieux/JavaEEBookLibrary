@@ -15,11 +15,10 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css.css">
   </head>
   <body>
-    <jsp:include page="header.jsp" />
-
-    <h1>Create New Book</h1>
-
     <f:view>
+      <jsp:include page="/template/header.jsp" />
+    <section class="wrap">
+      <h1>Create New Book</h1>
       <h:form id="create">            
         <h:panelGrid columns="3" border="0">
           Title: <h:inputText id="title"
@@ -37,13 +36,18 @@
                        value="#{bookmanager.bookYear}"
                        required="true"/>
           <h:message for="create:year" style="color: red"/>
+          Price: <h:inputText id="price"
+                       requiredMessage="*"
+                       value="#{bookmanager.bookPrice}"
+                       required="true"/>
+          <h:message for="create:price" style="color: red"/>
         </h:panelGrid>
         <h:commandButton id="submit" 
                          value="Create"
                          action="#{bookmanager.createBook}"/>
         <h:messages style="color: red" globalOnly="true"/>
       </h:form>
-    </f:view>
-
-  </body>
+    </section>
+  </f:view>
+</body>
 </html>

@@ -14,22 +14,9 @@
   </head>
   <body>
     <f:view>
-      <jsp:include page="template/header.jsp" />
+      <jsp:include page="/template/header.jsp" />
     <section class="wrap">
-      <h2>Books</h2>
-      <section class="search">
-        <h:form id="seach">
-          <h:panelGrid columns="2" border="0">
-            Search: <h:inputText id="title"
-                         requiredMessage="*"
-                         value="#{bookmanager.searchTerm}"
-                         required="true"/>
-          </h:panelGrid>
-          <h:commandButton id="submit"
-                           value="Search"
-                           action="#{bookmanager.search}"/>
-        </h:form>
-      </section>
+      <h2>${bookmanager.author}'s Books</h2>
       <ul class="books">
         <c:forEach var="book" items="#{bookmanager.getBooks()}" >
           <li>
@@ -76,17 +63,6 @@
         </c:if>
       </ul>
       <div class="clear"></div>
-
-      <%--
-      This example uses JSTL, uncomment the taglib directive above.
-      To test, display the page like this: index.jsp?sayHello=true&name=Murphy
-      --%>
-      <%--
-      <c:if test="${param.sayHello}">
-          <!-- Let's welcome the user ${param.name} -->
-          Hello ${param.name}!
-      </c:if>
-      --%>
     </section>
   </f:view>
 </body>

@@ -1,24 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lille1.car2014.durieux_toulet.manager;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.Resource;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import lille1.car2014.durieux_toulet.DAO.AuthorFinder;
+import lille1.car2014.durieux_toulet.DAO.BookFinder;
+import lille1.car2014.durieux_toulet.DAO.BookPersister;
 import lille1.car2014.durieux_toulet.entity.Book;
-import lille1.car2014.durieux_toulet.entity.BookImp;
+import lille1.car2014.durieux_toulet.entity.BookImpl;
 
 /**
  *
@@ -26,15 +15,12 @@ import lille1.car2014.durieux_toulet.entity.BookImp;
  */
 public class BookManager {
 
-  @PersistenceContext
-  private EntityManager em;
-
-  @Resource
-  private UserTransaction utx;
-
   private String bookTitle;
   private String bookAuthor;
   private int bookYear = 2014;
+  private String searchTerm;
+  private double bookPrice = 0.0;
+  private String author;
 
   public String getBookTitle() {
     return bookTitle;
@@ -60,31 +46,70 @@ public class BookManager {
     this.bookYear = bookYear;
   }
 
+  public String getSearchTerm() {
+    return searchTerm;
+  }
+
+  public void setSearchTerm(String searchTerm) {
+    this.searchTerm = searchTerm;
+  }
+
+  public double getBookPrice() {
+    return bookPrice;
+  }
+
+  public void setBookPrice(double bookPrice) {
+    this.bookPrice = bookPrice;
+  }
+
+  public String getAuthor() {
+    FacesContext facesContext = FacesContext.getCurrentInstance();
+    this.author = (String) facesContext.getExternalContext().
+            getRequestParameterMap().get("author");
+    return author;
+  }
+
+  public void setAuthor(String author) {
+    this.author = author;
+  }
+
   public String createBook() {
-    Book book = new BookImp(bookTitle, bookAuthor, bookYear);
+    FacesContext context = FacesContext.getCurrentInstance();
+
     try {
-      utx.begin();
-      em.persist(book);
-      utx.commit();
-    } catch (NotSupportedException ex) {
-      Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (SystemException ex) {
-      Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (RollbackException ex) {
-      Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (HeuristicMixedException ex) {
-      Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (HeuristicRollbackException ex) {
-      Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (SecurityException ex) {
-      Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (IllegalStateException ex) {
-      Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
+      Book book = new BookImpl(bookTitle, bookAuthor, bookYear, bookPrice);
+      BookPersister.INSTANCE.createBook(book);
+      return "index";
+    } catch (RuntimeException e) {
+      FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+              "Create Book Failed!",
+              "Title '"
+              + bookTitle
+              + "' does not exist.");
+      context.addMessage(null, message);
+      return null;
     }
-    return "index";
+  }
+
+  public String search() {
+    return null;
   }
 
   public List<Book> getBooks() {
-    return (List<Book>) em.createNamedQuery("books.getAllBooks").getResultList();
+    FacesContext facesContext = FacesContext.getCurrentInstance();
+    if (searchTerm != null && searchTerm.trim().length() > 0) {
+      return BookFinder.INSTANCE.findBooks(searchTerm);
+    }
+    String author = (String) facesContext.getExternalContext().
+            getRequestParameterMap().get("author");
+    if (author != null) {
+      this.author = author;
+      return BookFinder.INSTANCE.getBookFromAuthor(author);
+    }
+    return BookFinder.INSTANCE.getAllBooks();
+  }
+
+  public List<String> getAuthors() {
+    return AuthorFinder.INSTANCE.getAllAuthors();
   }
 }

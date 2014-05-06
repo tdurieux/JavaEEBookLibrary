@@ -5,6 +5,7 @@
  */
 package lille1.car2014.durieux_toulet.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,12 +18,13 @@ import javax.persistence.Table;
  * @author Thomas Durieux
  */
 @Entity
-@Table(name = "books")
+@Table(name = "WBOOK")
 @NamedQueries({
-  @NamedQuery(name = "books.findByTitle", query = "SELECT b FROM BookImp b WHERE b.title = :title"),
-  @NamedQuery(name = "books.getAllBooks", query = "SELECT b FROM BookImp b"),
-  @NamedQuery(name = "books.findByAuthor", query = "SELECT b FROM BookImp b WHERE b.author = :author")})
-public class BookImp implements Book {
+  @NamedQuery(name = "books.findByTitle", query = "SELECT b FROM BookImpl b WHERE LOCATE(b.title, :title) <> 0"),
+  @NamedQuery(name = "books.getAllBooks", query = "SELECT b FROM BookImpl b"),
+  @NamedQuery(name = "books.getAllAuthors", query = "SELECT distinct b.author FROM BookImpl b"),
+  @NamedQuery(name = "books.findByAuthor", query = "SELECT b FROM BookImpl b WHERE b.author = :author")})
+public class BookImpl implements Book, Serializable {
 
   @Id
   @Column(name = "title", nullable = false)
@@ -32,38 +34,55 @@ public class BookImp implements Book {
   @Column(name = "book_year", nullable = false)
   private int year;
 
-  public BookImp() {
+  @Column(name = "price")
+  private double price;
+
+  public BookImpl() {
 
   }
 
-  public BookImp(String title, String author, int year) {
+  public BookImpl(String title, String author, int year, double price) {
     this.title = title;
     this.author = author;
     this.year = year;
+    this.price = price;
   }
 
+  @Override
   public String getTitle() {
     return title;
   }
 
+  @Override
   public void setTitle(String title) {
     this.title = title;
   }
 
+  @Override
   public String getAuthor() {
     return author;
   }
 
+  @Override
   public void setAuthor(String author) {
     this.author = author;
   }
 
+  @Override
   public int getYear() {
     return year;
   }
 
   public void setYear(int year) {
     this.year = year;
+  }
+
+  public double getPrice() {
+    return price;
+  }
+
+  public void setPrice(double price) {
+    this.price = price;
   }
 
 }

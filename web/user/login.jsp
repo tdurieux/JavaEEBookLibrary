@@ -15,9 +15,11 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css.css">
   </head>
   <body>
-    <jsp:include page="header.jsp" />
-
     <f:view>
+      <jsp:include page="/template/header.jsp" />
+    <section class="wrap">
+      <h1>Login</h1>
+
       <h:messages style="color: red"
                   showDetail="true"/>
       <h:form id="login">
@@ -32,9 +34,12 @@
                          value="Login"
                          action="#{usermanager.validateUser}"/>
         <br>
+        <h:commandLink id="create"
+                       value="Create New Account"
+                       action="create"/>
       </h:form>
 
-    </f:view>
-
-  </body>
+    </section>
+  </f:view>
+</body>
 </html>

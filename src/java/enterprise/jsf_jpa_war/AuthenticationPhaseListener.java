@@ -34,6 +34,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
+import lille1.car2014.durieux_toulet.manager.UserManager;
 
 /**
  * <p>
@@ -53,7 +54,6 @@ public class AuthenticationPhaseListener implements PhaseListener {
    */
   private static final String USER_LOGIN_OUTCOME = "login";
 
-    // ---------------------------------------------- Methods from PhaseListener
   /**
    * <p>
    * Determines if the user is authenticated. If not, direct the user to the
@@ -95,7 +95,6 @@ public class AuthenticationPhaseListener implements PhaseListener {
     return PhaseId.RESTORE_VIEW;
   }
 
-    // --------------------------------------------------------- Private Methods       
   /**
    * <p>
    * Determine if the user has been authenticated by checking the session for an
@@ -128,6 +127,6 @@ public class AuthenticationPhaseListener implements PhaseListener {
   private boolean requestingSecureView(FacesContext context) {
     ExternalContext extContext = context.getExternalContext();
     String path = extContext.getRequestPathInfo();
-    return (!"/login.jsp".equals(path) && !"/create.jsp".equals(path));
+    return "/book/create.js".equals(path);
   }
 }
