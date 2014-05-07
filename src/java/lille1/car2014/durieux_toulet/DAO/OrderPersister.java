@@ -1,6 +1,6 @@
 package lille1.car2014.durieux_toulet.DAO;
 
-import lille1.car2014.durieux_toulet.entity.OrderImpl;
+import lille1.car2014.durieux_toulet.entity.Order;
 
 /**
  *
@@ -10,5 +10,5 @@ public interface OrderPersister {
 
   OrderPersister INSTANCE = new OrderPersisterImpl();
 
-  void createOrder(OrderImpl order);
+  void createOrder(Order order);
 }

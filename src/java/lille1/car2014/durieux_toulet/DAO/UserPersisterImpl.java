@@ -5,7 +5,7 @@
  */
 package lille1.car2014.durieux_toulet.DAO;
 
-import javax.annotation.PostConstruct;
+import lille1.car2014.durieux_toulet.entity.User;
 import lille1.car2014.durieux_toulet.entity.UserImpl;
 
 /**
@@ -14,16 +14,8 @@ import lille1.car2014.durieux_toulet.entity.UserImpl;
  */
 class UserPersisterImpl extends DAOAbs implements UserPersister {
 
-  public UserPersisterImpl() {
-  }
-
-  @PostConstruct
-  public void init() {
-    initUserDB();
-  }
-
   @Override
-  public void createUser(UserImpl user) {
+  public void createUser(User user) {
     try {
       if (em.getTransaction().isActive()) {
         em.getTransaction().rollback();
@@ -38,7 +30,7 @@ class UserPersisterImpl extends DAOAbs implements UserPersister {
   }
 
   @Override
-  public void removeUser(UserImpl user) {
+  public void removeUser(User user) {
     try {
       em.remove((UserImpl) user);
       em.flush();
@@ -48,17 +40,12 @@ class UserPersisterImpl extends DAOAbs implements UserPersister {
   }
 
   @Override
-  public void editUser(UserImpl newUser, UserImpl oldUser) {
+  public void editUser(User newUser, User oldUser) {
     try {
       em.merge((UserImpl) newUser);
       em.flush();
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
-  }
-
-  private void initUserDB() {
-    UserImpl u = new UserImpl(1, "admin", "admin", "admin", "admin");
-    createUser(u);
   }
 }

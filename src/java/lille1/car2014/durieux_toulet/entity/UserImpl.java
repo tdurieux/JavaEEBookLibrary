@@ -20,7 +20,7 @@ import javax.persistence.Table;
   @NamedQuery(name = "User.findById", query = "SELECT w FROM UserImpl w WHERE w.id = :id"),
   @NamedQuery(name = "User.all", query = "SELECT w FROM UserImpl w"),
   @NamedQuery(name = "User.findByUsername", query = "SELECT w FROM UserImpl w WHERE w.username = :username")})
-public class UserImpl implements Serializable {
+public class UserImpl implements Serializable, User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

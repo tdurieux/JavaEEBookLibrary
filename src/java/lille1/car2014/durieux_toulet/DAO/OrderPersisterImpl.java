@@ -1,5 +1,6 @@
 package lille1.car2014.durieux_toulet.DAO;
 
+import lille1.car2014.durieux_toulet.entity.Order;
 import lille1.car2014.durieux_toulet.entity.OrderImpl;
 
 /**
@@ -9,7 +10,7 @@ import lille1.car2014.durieux_toulet.entity.OrderImpl;
 class OrderPersisterImpl extends DAOAbs implements OrderPersister {
 
   @Override
-  public void createOrder(OrderImpl order) {
+  public void createOrder(Order order) {
     try {
       if (em.getTransaction().isActive()) {
         em.getTransaction().rollback();

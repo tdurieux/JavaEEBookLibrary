@@ -1,7 +1,7 @@
 package lille1.car2014.durieux_toulet.DAO;
 
 import java.util.List;
-import lille1.car2014.durieux_toulet.entity.UserImpl;
+import lille1.car2014.durieux_toulet.entity.User;
 
 /**
  *
@@ -11,9 +11,9 @@ public interface UserFinder {
 
   UserFinder INSTANCE = new UserFinderImpl();
 
-  UserImpl getUser(int id);
+  User getUser(int id);
 
-  UserImpl getUserFromUsername(String username);
+  User getUserFromUsername(String username);
 
-  List<UserImpl> getAllUsers();
+  List<User> getAllUsers();
 }

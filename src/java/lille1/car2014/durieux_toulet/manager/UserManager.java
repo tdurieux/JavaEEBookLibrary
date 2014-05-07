@@ -9,6 +9,7 @@ import javax.persistence.NoResultException;
 import javax.servlet.http.HttpSession;
 import lille1.car2014.durieux_toulet.DAO.UserFinder;
 import lille1.car2014.durieux_toulet.DAO.UserPersister;
+import lille1.car2014.durieux_toulet.entity.User;
 import lille1.car2014.durieux_toulet.entity.UserImpl;
 
 /**
@@ -91,7 +92,7 @@ public class UserManager {
   public String validateUser() {
     FacesContext context = FacesContext.getCurrentInstance();
     try {
-      UserImpl user = getUser(username);
+      User user = getUser(username);
       if (!user.getPassword().equals(password)) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                 "Login Failed!",
@@ -130,8 +131,8 @@ public class UserManager {
    */
   public String createUser() {
     FacesContext context = FacesContext.getCurrentInstance();
-    UserImpl wuser = null;
-    List<UserImpl> users = UserFinder.INSTANCE.getAllUsers();
+    User wuser = null;
+    List<User> users = UserFinder.INSTANCE.getAllUsers();
     try {
       wuser = getUser(username);
       FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -191,7 +192,7 @@ public class UserManager {
    *         username, otherwise, if no <code>UserImpl</code> can be found,
    *         returns <code>null</code>
    */
-  private UserImpl getUser(String username) throws NoResultException {
+  private User getUser(String username) throws NoResultException {
     return UserFinder.INSTANCE.getUserFromUsername(username);
   }
 }

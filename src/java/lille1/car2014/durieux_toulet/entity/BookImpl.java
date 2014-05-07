@@ -77,12 +77,23 @@ public class BookImpl implements Book, Serializable {
     this.year = year;
   }
 
+  @Override
   public double getPrice() {
     return price;
   }
 
   public void setPrice(double price) {
     this.price = price;
+  }
+
+  @Override
+  public String toString() {
+    return title + " " + price + "€ " + author + " (" + year + ")";
+  }
+
+  @Override
+  public int hashCode() {
+    return title.hashCode();
   }
 
 }
