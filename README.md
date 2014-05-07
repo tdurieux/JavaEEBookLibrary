@@ -7,7 +7,7 @@ Thomas Durieux & Cyrille Toulet
 ## Introduction
 
 Ce projet consiste en un site web basé sur la technologie JavaEE et ses EJB. Ce site permet de consulter en commander des livres.
-
+![Home](https://raw.githubusercontent.com/tdurieux/JavaEEBookLibrary/screenshots/home.png)
 ## API
 
 ## Book API 
@@ -185,5 +185,5 @@ public OrderImpl getOrder() {
       sessionMap.put(CART_SESSION_KEY, order);
     }
     return order;
-  }
+ }
 ```
