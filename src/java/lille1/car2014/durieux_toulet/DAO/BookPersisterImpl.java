@@ -57,7 +57,7 @@ public class BookPersisterImpl extends DAOAbs implements BookPersister {
       if (em.getTransaction().isActive()) {
         em.getTransaction().rollback();
       }
-      throw new DAOException("Unable to create book", ex);
+      throw new DAOException("Unable to create the book", ex);
     }
   }
 

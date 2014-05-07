@@ -63,12 +63,12 @@ public class AuthenticationPhaseListener implements PhaseListener {
    * Implementation Note: We do this in the <code>afterPhase</code> to make use
    * of the <code>NavigationHandler</code>.</p>
    */
+  @Override
   public void afterPhase(PhaseEvent event) {
     FacesContext context = event.getFacesContext();
 
     if (userExists(context)) {
       // allow processing of the requested view
-      return;
     } else {
       // send the user to the login view
       if (requestingSecureView(context)) {
@@ -85,12 +85,14 @@ public class AuthenticationPhaseListener implements PhaseListener {
    * <p>
    * This is a no-op.</p>
    */
+  @Override
   public void beforePhase(PhaseEvent event) {
   }
 
   /**
    * @return <code>PhaseId.RESTORE_VIEW</code>
    */
+  @Override
   public PhaseId getPhaseId() {
     return PhaseId.RESTORE_VIEW;
   }
