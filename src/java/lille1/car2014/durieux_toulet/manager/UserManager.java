@@ -7,6 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpSession;
+import lille1.car2014.durieux_toulet.DAO.DAOException;
 import lille1.car2014.durieux_toulet.DAO.UserFinder;
 import lille1.car2014.durieux_toulet.DAO.UserPersister;
 import lille1.car2014.durieux_toulet.entity.User;
@@ -154,7 +155,7 @@ public class UserManager {
       try {
         UserPersister.INSTANCE.createUser(wuser);
         return "login";
-      } catch (Exception e1) {
+      } catch (DAOException e1) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                 "Error creating user!",
                 "Unexpected error when creating your account.  Please contact the system Administrator");

@@ -5,6 +5,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import lille1.car2014.durieux_toulet.DAO.BookFinder;
+import lille1.car2014.durieux_toulet.DAO.DAOException;
 import lille1.car2014.durieux_toulet.DAO.OrderPersister;
 import lille1.car2014.durieux_toulet.entity.Book;
 import lille1.car2014.durieux_toulet.entity.OrderImpl;
@@ -88,7 +89,7 @@ public class OrderManager {
       order = new OrderImpl();
       sessionMap.put(CART_SESSION_KEY, order);
       return "index";
-    } catch (RuntimeException e) {
+    } catch (DAOException e) {
       FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
               "Checkout Failed!",
               "Unable to checkout.");

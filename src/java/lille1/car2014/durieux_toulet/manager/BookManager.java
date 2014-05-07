@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 import lille1.car2014.durieux_toulet.DAO.AuthorFinder;
 import lille1.car2014.durieux_toulet.DAO.BookFinder;
 import lille1.car2014.durieux_toulet.DAO.BookPersister;
+import lille1.car2014.durieux_toulet.DAO.DAOException;
 import lille1.car2014.durieux_toulet.entity.Book;
 import lille1.car2014.durieux_toulet.entity.BookImpl;
 
@@ -91,7 +92,7 @@ public class BookManager {
       Book book = new BookImpl(bookTitle, bookAuthor, bookYear, bookPrice);
       BookPersister.INSTANCE.createBook(book);
       return "index";
-    } catch (RuntimeException e) {
+    } catch (DAOException e) {
       FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
               "Create Book Failed!",
               "Title '"
