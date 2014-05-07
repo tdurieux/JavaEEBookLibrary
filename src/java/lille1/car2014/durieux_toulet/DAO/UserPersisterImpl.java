@@ -23,8 +23,10 @@ class UserPersisterImpl extends DAOAbs implements UserPersister {
       em.persist((UserImpl) user);
       em.getTransaction().commit();
     } catch (Exception e) {
-      em.getTransaction().rollback();
-      throw new RuntimeException(e);
+      if (em.getTransaction().isActive()) {
+        em.getTransaction().rollback();
+      }
+      throw new DAOException("Unable to create user", e);
     }
   }
 
@@ -34,10 +36,17 @@ class UserPersisterImpl extends DAOAbs implements UserPersister {
   @Override
   public void removeUser(User user) {
     try {
+      if (em.getTransaction().isActive()) {
+        em.getTransaction().rollback();
+      }
+      em.getTransaction().begin();
       em.remove((UserImpl) user);
-      em.flush();
+      em.getTransaction().commit();
     } catch (Exception e) {
-      throw new RuntimeException(e);
+      if (em.getTransaction().isActive()) {
+        em.getTransaction().rollback();
+      }
+      throw new DAOException("Unable to remove user", e);
     }
   }
 
@@ -47,10 +56,17 @@ class UserPersisterImpl extends DAOAbs implements UserPersister {
   @Override
   public void editUser(User newUser, User oldUser) {
     try {
+      if (em.getTransaction().isActive()) {
+        em.getTransaction().rollback();
+      }
+      em.getTransaction().begin();
       em.merge((UserImpl) newUser);
-      em.flush();
+      em.getTransaction().commit();
     } catch (Exception e) {
-      throw new RuntimeException(e);
+      if (em.getTransaction().isActive()) {
+        em.getTransaction().rollback();
+      }
+      throw new DAOException("Unable to edit user", e);
     }
   }
 }

@@ -24,8 +24,10 @@ class OrderPersisterImpl extends DAOAbs implements OrderPersister {
       em.persist((OrderImpl) order);
       em.getTransaction().commit();
     } catch (Exception e) {
-      em.getTransaction().rollback();
-      throw new RuntimeException(e);
+      if (em.getTransaction().isActive()) {
+        em.getTransaction().rollback();
+      }
+      throw new DAOException("Unable to create order", e);
     }
   }
 

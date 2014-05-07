@@ -23,7 +23,7 @@ public class BookPersisterImpl extends DAOAbs implements BookPersister {
       if (em.getTransaction().isActive()) {
         em.getTransaction().rollback();
       }
-      throw new RuntimeException(ex);
+      throw new DAOException("Unable to edit book", ex);
     }
   }
 
@@ -40,7 +40,7 @@ public class BookPersisterImpl extends DAOAbs implements BookPersister {
       if (em.getTransaction().isActive()) {
         em.getTransaction().rollback();
       }
-      throw new RuntimeException(ex);
+      throw new DAOException("Unable to remove book", ex);
     }
   }
 
@@ -57,7 +57,7 @@ public class BookPersisterImpl extends DAOAbs implements BookPersister {
       if (em.getTransaction().isActive()) {
         em.getTransaction().rollback();
       }
-      throw new RuntimeException(ex);
+      throw new DAOException("Unable to create book", ex);
     }
   }
 
