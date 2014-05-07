@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lille1.car2014.durieux_toulet.entity;
 
 import java.io.Serializable;
@@ -14,6 +9,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
+ * is an entity book stored on the table WBOOK
  *
  * @author Thomas Durieux
  */
@@ -48,26 +44,33 @@ public class BookImpl implements Book, Serializable {
     this.price = price;
   }
 
+  /**
+   * @see Book
+   */
   @Override
   public String getTitle() {
     return title;
   }
 
-  @Override
   public void setTitle(String title) {
     this.title = title;
   }
 
+  /**
+   * @see Book
+   */
   @Override
   public String getAuthor() {
     return author;
   }
 
-  @Override
   public void setAuthor(String author) {
     this.author = author;
   }
 
+  /**
+   * @see Book
+   */
   @Override
   public int getYear() {
     return year;
@@ -77,6 +80,9 @@ public class BookImpl implements Book, Serializable {
     this.year = year;
   }
 
+  /**
+   * @see Book
+   */
   @Override
   public double getPrice() {
     return price;
@@ -94,6 +100,21 @@ public class BookImpl implements Book, Serializable {
   @Override
   public int hashCode() {
     return title.hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final BookImpl other = (BookImpl) obj;
+    if ((this.title == null) ? (other.title != null) : !this.title.equals(other.title)) {
+      return false;
+    }
+    return true;
   }
 
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lille1.car2014.durieux_toulet.DAO;
 
 import java.util.HashMap;
@@ -14,6 +9,7 @@ import lille1.car2014.durieux_toulet.entity.UserImpl;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 /**
+ * is an abstract object witch provide EntityManager to child classes
  *
  * @author Thomas Durieux
  */
@@ -21,17 +17,27 @@ public class DAOAbs {
 
   protected EntityManager em = new EntityManagerUtility().getEntityManager();
 
+  /**
+   * is a static class used to create the EntityManager singloton
+   */
   public static class EntityManagerUtility {
 
     private static EntityManager em;
     private static EntityManagerFactory emf;
 
+    public static final String ENTITYMANAGERNAME = "book.library.persistence";
+
+    /**
+     * Get or create the EntityManager
+     *
+     * @return the EntityManager
+     */
     public EntityManager getEntityManager() {
       if (emf == null) {
         Map<String, Object> prop = new HashMap<String, Object>();
         prop.put(PersistenceUnitProperties.CLASSLOADER,
                 UserImpl.class.getClassLoader());
-        emf = Persistence.createEntityManagerFactory("book.library.persistence", prop);
+        emf = Persistence.createEntityManagerFactory(ENTITYMANAGERNAME, prop);
       }
       if (em == null) {
         em = emf.createEntityManager();
@@ -39,6 +45,9 @@ public class DAOAbs {
       return em;
     }
 
+    /**
+     * Close the EntityManager
+     */
     public void closeEntities() {
       if (em != null) {
         em.close();

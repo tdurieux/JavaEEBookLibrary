@@ -1,19 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lille1.car2014.durieux_toulet.DAO;
 
 import lille1.car2014.durieux_toulet.entity.User;
 import lille1.car2014.durieux_toulet.entity.UserImpl;
 
 /**
+ * used to execute all persisten operations on a user (create, edit, remove)
  *
  * @author Thomas Durieux
  */
 class UserPersisterImpl extends DAOAbs implements UserPersister {
 
+  /**
+   * @see UserPersister
+   */
   @Override
   public void createUser(User user) {
     try {
@@ -29,6 +28,9 @@ class UserPersisterImpl extends DAOAbs implements UserPersister {
     }
   }
 
+  /**
+   * @see UserPersister
+   */
   @Override
   public void removeUser(User user) {
     try {
@@ -39,6 +41,9 @@ class UserPersisterImpl extends DAOAbs implements UserPersister {
     }
   }
 
+  /**
+   * @see UserPersister
+   */
   @Override
   public void editUser(User newUser, User oldUser) {
     try {

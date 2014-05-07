@@ -4,7 +4,7 @@ import java.util.List;
 import lille1.car2014.durieux_toulet.entity.Book;
 
 /**
- * is all get operation on a book
+ * is a DAO used to find book
  *
  * @author Thomas Durieux
  */

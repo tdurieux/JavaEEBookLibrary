@@ -27,7 +27,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package enterprise.jsf_jpa_war;
+package lille1.car2014.durieux_toulet;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -127,6 +127,6 @@ public class AuthenticationPhaseListener implements PhaseListener {
   private boolean requestingSecureView(FacesContext context) {
     ExternalContext extContext = context.getExternalContext();
     String path = extContext.getRequestPathInfo();
-    return "/book/create.js".equals(path);
+    return "/book/create.jsp".equals(path);
   }
 }

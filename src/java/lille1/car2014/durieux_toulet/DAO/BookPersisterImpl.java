@@ -1,19 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lille1.car2014.durieux_toulet.DAO;
 
 import lille1.car2014.durieux_toulet.entity.Book;
 import lille1.car2014.durieux_toulet.entity.BookImpl;
 
 /**
+ * used to execute all persisten operations on a book (create, edit, remove)
  *
  * @author Thomas Durieux
  */
 public class BookPersisterImpl extends DAOAbs implements BookPersister {
 
+  /**
+   * @see BookPersister
+   */
   @Override
   public void editBook(Book newBook, Book oldBook) {
     try {
@@ -28,6 +27,9 @@ public class BookPersisterImpl extends DAOAbs implements BookPersister {
     }
   }
 
+  /**
+   * @see BookPersister
+   */
   @Override
   public void removeBook(Book book) {
     try {
@@ -42,6 +44,9 @@ public class BookPersisterImpl extends DAOAbs implements BookPersister {
     }
   }
 
+  /**
+   * @see BookPersister
+   */
   @Override
   public void createBook(Book book) {
     try {

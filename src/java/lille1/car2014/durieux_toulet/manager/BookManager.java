@@ -10,6 +10,7 @@ import lille1.car2014.durieux_toulet.entity.Book;
 import lille1.car2014.durieux_toulet.entity.BookImpl;
 
 /**
+ * is an managed bean used to acces book information from jsp pages
  *
  * @author Thomas Durieux
  */
@@ -62,6 +63,11 @@ public class BookManager {
     this.bookPrice = bookPrice;
   }
 
+  /**
+   * Get author parameters
+   *
+   * @return
+   */
   public String getAuthor() {
     FacesContext facesContext = FacesContext.getCurrentInstance();
     this.author = (String) facesContext.getExternalContext().
@@ -73,6 +79,11 @@ public class BookManager {
     this.author = author;
   }
 
+  /**
+   * Create a new book
+   *
+   * @return index
+   */
   public String createBook() {
     FacesContext context = FacesContext.getCurrentInstance();
 
@@ -91,10 +102,20 @@ public class BookManager {
     }
   }
 
+  /**
+   * Search a specific book
+   *
+   * @return null (refresh)
+   */
   public String search() {
     return null;
   }
 
+  /**
+   * Get all books
+   *
+   * @return all books
+   */
   public List<Book> getBooks() {
     FacesContext facesContext = FacesContext.getCurrentInstance();
     if (searchTerm != null && searchTerm.trim().length() > 0) {
@@ -109,6 +130,11 @@ public class BookManager {
     return BookFinder.INSTANCE.getAllBooks();
   }
 
+  /**
+   * get all authors
+   *
+   * @return auhtors
+   */
   public List<String> getAuthors() {
     return AuthorFinder.INSTANCE.getAllAuthors();
   }

@@ -11,6 +11,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
+ * is an entity user stored on the table WUSER
  *
  * @author Thomas Durieux
  */
@@ -40,7 +41,7 @@ public class UserImpl implements Serializable, User {
   private String password;
 
   /**
-   * Creates a new instance of Wuser
+   * Creates a new instance of UserImpl
    */
   public UserImpl() {
   }
@@ -64,6 +65,11 @@ public class UserImpl implements Serializable, User {
     this.password = password;
   }
 
+  /**
+   *
+   * @see User
+   */
+  @Override
   public int getId() {
     return this.id;
   }
@@ -72,6 +78,11 @@ public class UserImpl implements Serializable, User {
     this.id = id;
   }
 
+  /**
+   *
+   * @see User
+   */
+  @Override
   public String getFirstname() {
     return this.firstname;
   }
@@ -80,6 +91,11 @@ public class UserImpl implements Serializable, User {
     this.firstname = firstname;
   }
 
+  /**
+   *
+   * @see User
+   */
+  @Override
   public String getLastname() {
     return this.lastname;
   }
@@ -88,6 +104,11 @@ public class UserImpl implements Serializable, User {
     this.lastname = lastname;
   }
 
+  /**
+   *
+   * @see User
+   */
+  @Override
   public String getUsername() {
     return this.username;
   }
@@ -96,6 +117,11 @@ public class UserImpl implements Serializable, User {
     this.username = username;
   }
 
+  /**
+   *
+   * @see User
+   */
+  @Override
   public String getPassword() {
     return this.password;
   }

@@ -3,7 +3,7 @@ package lille1.car2014.durieux_toulet.DAO;
 import lille1.car2014.durieux_toulet.entity.Book;
 
 /**
- * All persistens operations on a book (create, edit, remove)
+ * used to execute all persisten operations on a book (create, edit, remove)
  *
  * @author Thomas Durieux
  */

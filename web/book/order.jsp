@@ -27,11 +27,19 @@
           <span>Price</span>
         </li>
         <c:set var="total" value="0"/>
-        <c:forEach var="item" items="#{ordermanager.getOrder().getBooks()}" >
+        <c:set var="books" value="${ordermanager.getOrder().getBooks()}"/>
+        <c:forEach var="item" items="${books}" >
           <li class="order_book row">
             <span class="quantity"><c:out value="${item.value}"/></span>
             <span class="itemName"><c:out value="${item.key.title}"/></span>
-            <span class="popbtn" data-original-title="" title=""><a class="arrow"></a></span>
+            <h:form id="${item.key.title}">
+              <h:commandButton value="remove"
+                               styleClass="order"
+                               action="#{ordermanager.removeBook(item.key.title)}">
+                <f:param name="title" value="#{item.key.title}" />
+              </h:commandButton>
+            </h:form>
+            <span class="glyphicon glyphicon-remove"></span>
             <span class="price">
               <c:out value="${item.key.price}">
                 <f:convertNumber currencySymbol="€" groupingUsed="true"

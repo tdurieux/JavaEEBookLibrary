@@ -10,14 +10,20 @@ import lille1.car2014.durieux_toulet.entity.Book;
 import lille1.car2014.durieux_toulet.entity.OrderImpl;
 
 /**
+ * is an managed bean used to acces order information from jsp pages
  *
  * @author Thomas Durieux
  */
 @ManagedBean(name = "ordermanager")
 public class OrderManager {
 
-  private final String CART_SESSION_KEY = "cart";
+  public static final String CART_SESSION_KEY = "cart";
 
+  /**
+   * Get the order stored in the session
+   *
+   * @return the order
+   */
   public OrderImpl getOrder() {
     FacesContext context = FacesContext.getCurrentInstance();
     Map<String, Object> sessionMap = context.getExternalContext().getSessionMap();
@@ -31,6 +37,11 @@ public class OrderManager {
     return order;
   }
 
+  /**
+   * Add a book to the cart
+   *
+   * @return null (refresh)
+   */
   public String addBookToCart() {
     FacesContext context = FacesContext.getCurrentInstance();
     OrderImpl order = getOrder();
@@ -47,6 +58,27 @@ public class OrderManager {
     return null;
   }
 
+  /**
+   * Remove a book from the order
+   *
+   * @return null (refresh)
+   */
+  public String removeBook(String title) {
+    FacesContext context = FacesContext.getCurrentInstance();
+    OrderImpl order = getOrder();
+    Map<String, String> params = context.getExternalContext().getRequestParameterMap();
+    String tit = (String) params.values().toArray()[0];
+
+    Book book = BookFinder.INSTANCE.getBook(tit);
+    order.removeBook(book);
+    return null;
+  }
+
+  /**
+   * Checkout the order
+   *
+   * @return index or null
+   */
   public String checkout() {
     FacesContext context = FacesContext.getCurrentInstance();
     try {

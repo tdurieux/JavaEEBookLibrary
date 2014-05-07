@@ -3,6 +3,7 @@ package lille1.car2014.durieux_toulet.DAO;
 import java.util.List;
 
 /**
+ * is a DAO used to find author of books
  *
  * @author Thomas Durieux
  */
