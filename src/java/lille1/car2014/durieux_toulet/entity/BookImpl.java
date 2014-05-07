@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "WBOOK")
 @NamedQueries({
-  @NamedQuery(name = "books.findByTitle", query = "SELECT b FROM BookImpl b WHERE LOCATE(b.title, :title) <> 0"),
+  @NamedQuery(name = "books.findByTitle", query = "SELECT b FROM BookImpl b WHERE b.title LIKE :title"),
   @NamedQuery(name = "books.getAllBooks", query = "SELECT b FROM BookImpl b"),
   @NamedQuery(name = "books.getAllAuthors", query = "SELECT distinct b.author FROM BookImpl b"),
   @NamedQuery(name = "books.findByAuthor", query = "SELECT b FROM BookImpl b WHERE b.author = :author")})

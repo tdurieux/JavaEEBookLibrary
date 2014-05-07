@@ -23,7 +23,7 @@
       <ul class="auhtors">
         <c:forEach var="author" items="#{bookmanager.getAuthors()}" >
           <li class="author">
-            <a href="${pageContext.request.contextPath}/p/book/author.jsp?name=${author}"> ${author}</a>
+            <a href="${pageContext.request.contextPath}/p/book/author.jsp?author=${author}"> ${author}</a>
           </li>
         </c:forEach>
         <c:if test="${empty bookmanager.getAuthors()}">

@@ -23,7 +23,7 @@ header {
   background: #DF723C;
   height: 40px;
   box-shadow: 0 0 5px rgba(0,0,0,0.3); 
-  z-index: 1;
+  z-index: 999999;
   position: fixed;
   width: 100%;
 }
@@ -88,7 +88,7 @@ body > .wrap{
   width: 200px;
   float: left;
   z-index: 1;
-  margin: 0px 50px 40px 0;
+  margin: 0px 20px 40px 0;
   -webkit-perspective: 1800px;
   -moz-perspective: 1800px;
   perspective: 1800px;

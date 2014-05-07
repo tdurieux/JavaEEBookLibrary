@@ -26,7 +26,7 @@ public class BookFinderImpl extends DAOAbs implements BookFinder {
 
   @Override
   public List<Book> findBooks(String title) {
-    return (List<Book>) em.createNamedQuery("books.findByTitle").setParameter("title", title).getResultList();
+    return (List<Book>) em.createNamedQuery("books.findByTitle").setParameter("title", "%" + title + "%").getResultList();
   }
 
   @Override

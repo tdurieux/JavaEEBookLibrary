@@ -8,7 +8,9 @@
       <ul>
         <li><a href="${pageContext.request.contextPath}/p/index.jsp">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/p/book/authors.jsp">Authors</a></li>
-        <li><a href="${pageContext.request.contextPath}/p/book/order.jsp">Order</a></li>
+          <c:if test="${not empty ordermanager.getOrder().getBooks()}">
+          <li><a href="${pageContext.request.contextPath}/p/book/order.jsp">${ordermanager.getOrder().getBooks().size()} Order</a></li>
+          </c:if>
           <c:if test="${!usermanager.isConnected()}">
           <li><a href="${pageContext.request.contextPath}/p/user/login.jsp">Login</a></li>
           <li><a href="${pageContext.request.contextPath}/p/user/create.jsp">Register</a></li>
