@@ -1,7 +1,6 @@
 package test.lille1.car2014.durieux_toulet.manager;
 
 import lille1.car2014.durieux_toulet.manager.UserManager;
-import lille1.car2014.durieux_toulet.DAO.UserFinder;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -25,13 +24,13 @@ public class UserManagerTest {
     um.setLname(lastname);
 
     // Create user
-    um.createUser();
+    String user = um.createUser();
 
     // Do tests
-    assertEquals(firstname, UserFinder.INSTANCE.getUserFromUsername(username).getFirstname());
-    assertEquals(lastname, UserFinder.INSTANCE.getUserFromUsername(username).getLastname());
-    assertEquals(username, UserFinder.INSTANCE.getUserFromUsername(username).getUsername());
-    assertEquals(password, UserFinder.INSTANCE.getUserFromUsername(username).getPassword());
+    assertEquals(firstname, um.getUser(username).getFirstname());
+    assertEquals(lastname, um.getUser(username).getLastname());
+    assertEquals(username, um.getUser(username).getUsername());
+    assertEquals(password, um.getUser(username).getPassword());
   }
 
 }
