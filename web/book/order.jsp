@@ -33,8 +33,8 @@
             <span class="quantity"><c:out value="${item.value}"/></span>
             <span class="itemName"><c:out value="${item.key.title}"/></span>
             <h:form>
-              <h:commandButton value="remove"
-                               styleClass="order"
+              <h:commandButton value="x"
+                               styleClass="remove"
                                action="#{ordermanager.removeBook}">
                 <f:param name="title" value="#{item.key.title}" />
               </h:commandButton>

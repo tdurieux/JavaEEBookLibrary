@@ -67,7 +67,7 @@ public class BookManager {
   /**
    * Get author parameters
    *
-   * @return
+   * @return the author
    */
   public String getAuthor() {
     FacesContext facesContext = FacesContext.getCurrentInstance();

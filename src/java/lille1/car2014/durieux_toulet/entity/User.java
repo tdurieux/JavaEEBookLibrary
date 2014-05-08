@@ -12,7 +12,7 @@ public interface User {
    *
    * @return the id
    */
-  int getId();
+  Integer getId();
 
   /**
    * the the firstname

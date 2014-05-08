@@ -70,7 +70,7 @@ public class UserImpl implements Serializable, User {
    * @see User
    */
   @Override
-  public int getId() {
+  public Integer getId() {
     return this.id;
   }
 
