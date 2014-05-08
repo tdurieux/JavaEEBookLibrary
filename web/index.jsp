@@ -51,10 +51,12 @@
               </div>
             </div>
             <div class="bk-info">
-              <h:form id="order-${book.title}">
+
+              <c:set var="id" value='#{book.title.replace(" ", "-")}'/>
+              <h:form id="${id}-order">
                 <span class="price">${book.price}€ x</span>
                 <h:inputText requiredMessage="*"
-                             id="${book.title}-quantity"
+                             id="${id}-quantity"
                              value="1"
                              styleClass="quantity"
                              required="true">
@@ -63,7 +65,7 @@
                 <h:commandButton value="Order"
                                  styleClass="order"
                                  action="#{ordermanager.addBookToCart}">
-                  <f:param name="title" value="#{book.title}" />
+                  <f:param name="title" value="#{id}" />
                 </h:commandButton>
               </h:form>
             </div>
@@ -76,17 +78,6 @@
         </c:if>
       </ul>
       <div class="clear"></div>
-
-      <%--
-      This example uses JSTL, uncomment the taglib directive above.
-      To test, display the page like this: index.jsp?sayHello=true&name=Murphy
-      --%>
-      <%--
-      <c:if test="${param.sayHello}">
-          <!-- Let's welcome the user ${param.name} -->
-          Hello ${param.name}!
-      </c:if>
-      --%>
     </section>
   </f:view>
 </body>

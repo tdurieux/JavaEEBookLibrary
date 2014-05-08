@@ -156,7 +156,8 @@ Cet exemple montre comment une requête d’ajout au panier est géré coté JSP
 ```
 
 #### Gestion des accès
-Dans cette exemple nous pouvons voir la méthode qui est appelée avant la génération d’une page. Cette méthode vérifie que la page soit bien public si l’utilisation n’est pas connecté sinon on le redirige vers la page de connexion.
+
+Dans cette exemple nous pouvons voir la méthode qui est appelée avant la génération d’une page. Cette méthode vérifie que la page est bien public. Si l’utilisation n’est pas connecté on le redirige vers la page de connexion.
 
 ```AuthenticationPhaseListener``` qui implémente ```PhaseListener```
 

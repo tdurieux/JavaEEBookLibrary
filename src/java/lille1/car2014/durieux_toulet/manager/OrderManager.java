@@ -64,13 +64,13 @@ public class OrderManager {
    *
    * @return null (refresh)
    */
-  public String removeBook(String title) {
+  public String removeBook() {
     FacesContext context = FacesContext.getCurrentInstance();
     OrderImpl order = getOrder();
     Map<String, String> params = context.getExternalContext().getRequestParameterMap();
-    String tit = (String) params.values().toArray()[0];
+    String title = (String) params.values().toArray()[0];
 
-    Book book = BookFinder.INSTANCE.getBook(tit);
+    Book book = BookFinder.INSTANCE.getBook(title);
     order.removeBook(book);
     return null;
   }
