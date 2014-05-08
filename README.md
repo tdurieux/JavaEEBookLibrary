@@ -10,7 +10,7 @@ Ce projet consiste en un site web basé sur la technologie JavaEE et ses EJB. Ce
 ![Home](https://raw.githubusercontent.com/tdurieux/JavaEEBookLibrary/screenshots/home.png)
 ## API
 
-## Book API 
+## Book API
 HTTP Méthodes | URL |Body           | Description
 --------------|-----|---------------|-------------
 GET           | /api/book/_bookTitle_ | |Récupérer un livre au format JSON
@@ -19,7 +19,7 @@ PUT           | /api/book/_bookTitle_ | un livre au format JSON               |C
 POST          | /api/book/_bookTitle_  | Les nouvelles données du livre au format JSON | Met à jour les information du livre.
 GET          | /api/books  |  |Récupère une liste de livres
 
-## Order API 
+## Order API
 HTTP Méthodes | URL |Body           | Description
 --------------|-----|---------------|-------------
 GET           | /api/cart | |Récupérer le panier stocké dans la session
@@ -37,7 +37,7 @@ Cette ```RunTimeException``` est lancée par les persisters.
 BookPersisterImpl méthode createBook:
 ```JAVA
 throw new DAOException("Unable to create the book", ex);
-``` 
+```
 
 Cette exception est interceptée dans les managers.
 
@@ -72,6 +72,15 @@ La classe UserManager intercepte également les exceptions NoResultException dan
 
 ## Architecture
 
+### Diagramme de classe
+
+#### lille1.car2014.durieux_toulet.doa
+![DOA](https://raw.githubusercontent.com/tdurieux/JavaEEBookLibrary/screenshots/DAO.png)
+#### lille1.car2014.durieux_toulet.entity
+![Entities](https://raw.githubusercontent.com/tdurieux/JavaEEBookLibrary/screenshots/entities.png)
+#### lille1.car2014.durieux_toulet.manager
+![Manager](https://raw.githubusercontent.com/tdurieux/JavaEEBookLibrary/screenshots/managers.png)
+
 ### Interface
 
 ### Classe abstraite
@@ -82,11 +91,11 @@ La classe UserManager intercepte également les exceptions NoResultException dan
 
 Voici en exemple le code de l’entité qui représente un livre. On  y voir les différentes annotations qui permette de la créer
 - @Entity: Indique que la classe est une classe entité
-- @Table(name = "WBOOK"): Défini le nom de la table dans la base de donnée 
+- @Table(name = "WBOOK"): Défini le nom de la table dans la base de donnée
 - @NamedQueries: Défini dans query lié à cette entité
 - @Id: Défini que le champ titre est l’id du livre
 - @Column(name = "title", nullable = false): Défini le nom de la colonne ainsi que la politique sur la valeur de ce champ
- 
+
 ``` JAVA
 @Entity
 @Table(name = "WBOOK")
@@ -157,7 +166,7 @@ Dans cette exemple nous pouvons voir la méthode qui est appelée avant la gén�
     FacesContext context = event.getFacesContext();
 
     if (!userExists(context)) {
-      // check if the page is a secure view		
+      // check if the page is a secure view
       if (requestingSecureView(context)) {
         context.responseComplete();
 	      // send the user to the login view
