@@ -11,7 +11,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * is an entity user stored on the table WUSER
+ * is user defined by an id, only authenticated user can add new book and is
+ * stored on the table WUSER
  *
  * @author Thomas Durieux
  */

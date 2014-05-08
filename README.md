@@ -83,7 +83,38 @@ La classe UserManager intercepte également les exceptions NoResultException dan
 
 ### Interface
 
+Chaque DAO possède une interface.
+
+##### AuthorFinder
+is a DAO used to find author of books
+##### BookFinder
+is a DAO used to find book
+##### BookPersister
+used to execute all persistent operations on a book (create, edit, remove)
+##### OrderFinder
+is a DAO used to find order
+##### OrderPersister
+used to execute all persistent operations on a order (create)
+##### UserFinder
+is a DAO used to find user
+##### UserPersister
+used to execute all persistent operations on a user (create, edit, remove)
+
+Chaque Entity possède une interface.
+
+##### Book
+is a book defined by a title, an auhor, a year and a price.
+
+##### Order
+is an order defined by an id, it contains books and how many book are ordered.
+
+##### User
+is user defined by an id, only authenticated user can add new book
+
 ### Classe abstraite
+
+##### DAOAbs
+is an abstract object witch provides EntityManager access to child classes
 
 ## Code simple
 

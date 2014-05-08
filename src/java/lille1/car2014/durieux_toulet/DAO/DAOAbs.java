@@ -9,7 +9,7 @@ import lille1.car2014.durieux_toulet.entity.UserImpl;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 /**
- * is an abstract object witch provide EntityManager to child classes
+ * is an abstract object witch provides EntityManager access to child classes.
  *
  * @author Thomas Durieux
  */

@@ -3,7 +3,8 @@ package lille1.car2014.durieux_toulet.entity;
 import java.util.Map;
 
 /**
- * is an order of book.
+ * is an order defined by an id, it contains books and how many book are
+ * ordered.
  *
  * @author Thomas Durieux
  */

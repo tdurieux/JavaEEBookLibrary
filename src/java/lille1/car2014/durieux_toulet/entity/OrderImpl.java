@@ -17,7 +17,8 @@ import javax.persistence.Table;
 
 /**
  *
- * is an entity order stored on the table ORDERS
+ * is an order defined by an id, it contains books and how many book are ordered
+ * and is stored in the table ORDERS.
  *
  * @author Thomas Durieux
  */

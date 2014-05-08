@@ -9,7 +9,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * is an entity book stored on the table WBOOK
+ * is a book defined by a title, an auhor, a year and a price and is stored in
+ * the table WBOOK.
  *
  * @author Thomas Durieux
  */

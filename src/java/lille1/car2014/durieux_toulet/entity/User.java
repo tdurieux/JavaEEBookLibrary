@@ -1,7 +1,7 @@
 package lille1.car2014.durieux_toulet.entity;
 
 /**
- * is a special user of the application
+ * is user defined by an id, only authenticated user can add new book
  *
  * @author Thomas Durieux
  */

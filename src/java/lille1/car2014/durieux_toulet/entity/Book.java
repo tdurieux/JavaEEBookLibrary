@@ -1,7 +1,7 @@
 package lille1.car2014.durieux_toulet.entity;
 
 /**
- * is an entity book
+ * is a book defined by a title, an auhor, a year and a price.
  *
  * @author Thomas Durieux
  */
