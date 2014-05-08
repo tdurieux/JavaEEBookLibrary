@@ -28,7 +28,9 @@ public class BookManagerTest {
     // Create book
     bm.createBook();
 
+    // Get book
     Book book = BookFinder.INSTANCE.getBook(title);
+
     // Do tests
     assertEquals(title, book.getTitle());
     assertEquals(author, book.getAuthor());

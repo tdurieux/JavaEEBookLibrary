@@ -1,6 +1,7 @@
 package test.lille1.car2014.durieux_toulet.manager;
 
 import lille1.car2014.durieux_toulet.manager.UserManager;
+import lille1.car2014.durieux_toulet.entity.User;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -24,13 +25,16 @@ public class UserManagerTest {
     um.setLname(lastname);
 
     // Create user
-    String user = um.createUser();
+    String userLogged = um.createUser();
+
+    // Get user
+    User user = user.getUser(username);
 
     // Do tests
-    assertEquals(firstname, um.getUser(username).getFirstname());
-    assertEquals(lastname, um.getUser(username).getLastname());
-    assertEquals(username, um.getUser(username).getUsername());
-    assertEquals(password, um.getUser(username).getPassword());
+    assertEquals(firstname, user.getFirstname());
+    assertEquals(lastname, user.getLastname());
+    assertEquals(username, user.getUsername());
+    assertEquals(password, user.getPassword());
   }
 
 }
