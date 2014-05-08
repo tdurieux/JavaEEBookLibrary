@@ -1,7 +1,8 @@
 package test.lille1.car2014.durieux_toulet.manager;
 
-import lille1.car2014.durieux_toulet.manager.UserManager;
+import lille1.car2014.durieux_toulet.DAO.UserFinder;
 import lille1.car2014.durieux_toulet.entity.User;
+import lille1.car2014.durieux_toulet.manager.UserManager;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -28,7 +29,7 @@ public class UserManagerTest {
     String userLogged = um.createUser();
 
     // Get user
-    User user = user.getUser(username);
+    User user = UserFinder.INSTANCE.getUserFromUsername(username);
 
     // Do tests
     assertEquals(firstname, user.getFirstname());
