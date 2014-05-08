@@ -10,13 +10,16 @@ public class BookManagerTest {
 
     @Test
     public void testBookCreation() {
+        // Instanciate book manager
         BookManager bm = new BookManager();
 
-        bm.setBookTitle("Game of thrones");
+        // Set book data
+        bm.setBookTitle("Game_of_thrones");
         bm.setBookAuthor("Hodor");
         bm.setBookYear(2013);
         bm.setBookPrice(20.50);
 
+        // Create book
         bm.createBook();
 
         //assertEquals(?, ?);

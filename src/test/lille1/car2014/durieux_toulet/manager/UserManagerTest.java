@@ -10,6 +10,7 @@ public class UserManagerTest {
 
     @Test
     public void testUserCreation() {
+        // Instanciate user manager
         UserManager um = new UserManager();
 
         // Set user description
